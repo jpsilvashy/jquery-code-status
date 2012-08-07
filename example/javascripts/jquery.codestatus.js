@@ -15,45 +15,57 @@
     // array of all supported providers
     var availableProviders = {
       travisci: 'http://travis-ci.org/',
-      // gemnasium: 'https://gemnasium.com/'
+      gemnasium: 'https://gemnasium.com/'
     };
 
     // selected providers
-    // check that each of the providers is available
+    // FIXME: check that each of the providers is available
     var selectedProviders = availableProviders
+
+    $.each(selectedProviders, function(provider, baseUrl) {
+      if (provider == 'travisci') {
+        var link = $('<a />').addClass('codestatus-provider-travisci').attr('href', baseUrl + settings.repository);
+        var role = $('<span />').text('Build Status').addClass('codestatus-role');
+        var state = $('<span />').text('Loading').addClass('codestatus-state');
+
+        link.append(role, state);
+        $('#codestatus').append(link);
+      }
+
+      if (provider == 'gemnasium') {
+        console.error('gemnasium not yet supported');
+      }
+
+    });
+
 
     return this.each(function() {
 
-      // change state
-      // $(this).html("loading...");
-
       // make json requests to each provider
-      console.log(settings.providers);
-
-      jQuery.each(selectedProviders, function(provider, baseUrl) {
+      $.each(selectedProviders, function(provider, baseUrl) {
         console.log(options);
 
         var url = baseUrl + options.repository
-        console.log('make request to: ', url)
 
         // make request
         $.ajax({
           url: url + '.json',
           dataType: 'jsonp',
           success: function(data) {
-            if (data.last_build_result == 0) {
-              console.log('Passed');
+            if (provider == 'travisci') {
+              if (data.last_build_result == 0) {
+                $('.codestatus-provider-travisci').addClass('codestatus-ok');
+                $('.codestatus-provider-travisci .codestatus-state').text("Passed");
+              } else {
+                $('.codestatus-provider-travisci').addClass('codestatus-ok');
+                $('.codestatus-provider-travisci .codestatus-state').text("Passed");
+              }
             } else {
-              console.log('Failed');
+              console.log("only travisci is supported at the time")
             }
           }
         });
 
-        // build html object and insert it
-        // this should be in the scope of the *this* from the outer function
-        // that way we can hook on to the same html object that called the
-        // function, this is hacked right now.
-        $('#codestatus').append('append')
 
       });
 
