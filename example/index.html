@@ -7,6 +7,7 @@
   <title></title>
   <meta name="author" content="Joseph Silvashy">
 
+  <link rel="stylesheet" href="/stylesheets/codestatus.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,16 +15,28 @@
 </head>
 <body>
 
-  <div id="codestatus"></div>
+  <div id="codestatus">
+
+    <a href="#" class="codestatus-provider-travisci">
+      <span class='codestatus-role'>Build Status</span>
+      <span class='codestatus-state'>Passing</span>
+    </a>
+
+    <a href="#" class="codestatus-provider-gemnasium">
+      <span class='codestatus-role'>Dependency Status</span>
+      <span class='codestatus-state'>Up-to-date</span>
+    </a>
+
+  </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
   <script src="/javascripts/jquery.codestatus.js"></script>
 
   <script type="text/javascript">
-    $('#codestatus').codeStatus({
-      repository: 'jpsilvashy/chattyloo',
-      providers: [ 'travisci', 'gemnasium' ]
-    });
+  $('#codestatus').codeStatus({
+    repository: 'jpsilvashy/chattyloo',
+    // providers: [ 'travisci', 'gemnasium' ]
+  });
   </script>
 </body>
 </html>

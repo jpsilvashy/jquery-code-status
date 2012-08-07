@@ -1,0 +1,67 @@
+/* main container for all providers */
+#codestatus {
+  display: inline-block;
+}
+
+/* provider status */
+#codestatus a {
+  background: #454545;
+  color: rgba(255,255,255,0.85);
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-size: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right:0.5em;
+  line-height: 1;
+
+  -moz-box-shadow: inset 0px -1px rgba(0,0,0,0.65);
+  -webkit-box-shadow: inset 0px -1px rgba(0,0,0,0.65);
+  box-shadow: inset 0px -1px rgba(0,0,0,0.65);
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+  text-shadow:0 1px 0 rgba(0,0,0,0.65);
+  overflow: hidden;
+}
+
+/* loading state */
+#codestatus a.loading {
+
+}
+
+/* the role text, for example "Build Status" for travis-ci */
+#codestatus a .codestatus-role {
+  display: inline-block;
+  float: left;
+  padding:5px 8px;
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+/* the state of the results from the provider, for example "Passing" for travis-ci */
+#codestatus a .codestatus-state {
+  display:inline-block;
+  float:left;
+  padding:5px 8px;
+  background: green;
+  border-left: 1px solid rgba(255,255,255,0.15);
+
+  -moz-box-shadow: inset 2px -1px rgba(0,0,0,0.25);
+  -webkit-box-shadow: inset 0px -1px rgba(0,0,0,0.25);
+  box-shadow: inset 0px -1px rgba(0,0,0,0.25);
+
+  background-image: linear-gradient(bottom, rgb(2,158,2) 0%, rgb(0,194,0) 100%);
+  background-image: -o-linear-gradient(bottom, rgb(2,158,2) 0%, rgb(0,194,0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgb(2,158,2) 0%, rgb(0,194,0) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgb(2,158,2) 0%, rgb(0,194,0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgb(2,158,2) 0%, rgb(0,194,0) 100%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(2,158,2)),
+    color-stop(1, rgb(0,194,0))
+  );
+}
